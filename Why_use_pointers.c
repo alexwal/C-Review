@@ -1,3 +1,8 @@
+// In C, functions receive (shallow) copies of their inputs (including structs), and so
+// are unable to modify values unless given copies of memory addresses (pointers),
+// since copies of pointers point to the same chunks of memory (even if the pointers themselves
+// are stored in different memory addresses).
+
 #include <stdlib.h>
 #include <stdio.h>
 
