@@ -25,43 +25,50 @@ Node create_node(int value) {
 // This doesn't work becasue a copy of struct Node is input to this
 // function, so we don't have knowledge of the memory address controlling
 // the passed in struct Node. 
-void change_struct_Node(struct Node n, int v) {
+void change_struct_node(struct Node n, int v) {
     // Passed in (shallow) copy of struct Node
     n.value = v;
 }
 
 // This works because a Node (without struct) is a memory address (ptr!),
 // so we are actually getting a copy of the pointer to the struct Node.
-void change_Node(Node n, int v) {
+void change_node(Node n, int v) {
     // Passed in copy of memory address
     n->value = v;
 }
 
 int main() {
+
+    // I. Using a struct pointer.
+
     // Node is typedef'd as a struct Node* which is just a
     // memory address, so we can easily pass a copy of this
     // address to change its memory value:
+
     Node node = create_node(5);
     printf("Before Node change: %i\n", node->value);
     // prints 5
 
-    change_Node(node, 6);
+    change_node(node, 6);
     printf("After Node change: %i\n", node->value);
     // prints 6
 
-    Node sn_ptr = create_node(7); 
-    struct Node sn = *sn_ptr;
-    printf("Before struct Node change: %i\n", sn.value);
-    // prints 7
+    // II. Using a struct (no pointer).
+
+    struct Node struct_node = *node; // evaluate the pointer
+    printf("Before struct Node change: %i\n", struct_node.value);
+    // prints 6
 
     // Results in no change:
-    change_struct_Node(sn, 8);
-    printf("After struct Node change: %i\n", sn.value);
-    // prints 7
+    change_struct_node(struct_node, 7);
+    printf("After struct Node change: %i\n", struct_node.value);
+    // prints 6
+
+    // III. Using a pointer again.
 
     // Results in change:
-    change_Node(&sn, 8);
-    printf("After &(struct Node) == Node change: %i\n", sn.value);
-    // prints 8
+    change_node(&struct_node, 7);
+    printf("After &(struct Node) == Node change: %i\n", struct_node.value);
+    // prints 7
 }
 
