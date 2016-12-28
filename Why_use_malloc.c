@@ -1,3 +1,4 @@
+// You can't return an array from a function in C, only a pointer!
 // Auto-allocated memory is placed on the stack and gets freed after functions return.
 // Manually allocated memory with `malloc` is located on the heap and lasts after functions return.
 
