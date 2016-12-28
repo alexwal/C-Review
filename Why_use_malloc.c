@@ -50,7 +50,7 @@ int main(){
         // the array `int out[count]` is auto-allocated on the stack. 
         // When `get_even` returns, the stack frame is closed, and
         // auto-allocated memory is cleared.
-        // This is bad because e returned a pointer to memory on the stack, 
+        // This is bad because we returned a pointer to memory on the stack, 
         // which is undefined behavior, because it could now be pointing
         // to anything...
 
@@ -68,6 +68,6 @@ int main(){
         // This was our original goal.
 
     // 7:       okay.
-        // it's a good idea to free `malloc`d memory.
+        // It's a good idea to free `malloc`d memory.
 }
 
