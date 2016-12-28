@@ -8,8 +8,11 @@ typedef struct Node {
 } *Node;
 // Now we can say "struct Node node" OR "Node node"
 // since both are defined!!
-// We'll treat a pointer to a Node simply as a Node and access
-// its fields by `->`.
+
+// With the above typedef all set,
+// we'll treat a pointer to a "struct Node"
+// simply as a "Node" and
+// access its fields with `->`.
 
 Node create_node(int value) {
     Node node = malloc(sizeof(struct Node));
