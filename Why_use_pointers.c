@@ -43,19 +43,25 @@ int main() {
     // address to change its memory value:
     Node node = create_node(5);
     printf("Before Node change: %i\n", node->value);
+    // prints 5
+
     change_Node(node, 6);
     printf("After Node change: %i\n", node->value);
+    // prints 6
 
     Node sn_ptr = create_node(7); 
     struct Node sn = *sn_ptr;
     printf("Before struct Node change: %i\n", sn.value);
+    // prints 7
 
     // Results in no change:
     change_struct_Node(sn, 8);
     printf("After struct Node change: %i\n", sn.value);
+    // prints 7
 
     // Results in change:
     change_Node(&sn, 8);
     printf("After &(struct Node) == Node change: %i\n", sn.value);
+    // prints 8
 }
 
